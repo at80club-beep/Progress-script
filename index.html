@@ -1,80 +1,138 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>アンカー確認</title>
+  <meta charset="UTF-8" />
+  <title>ものづくり教室 2日間 進行台本（先生用）</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<style>
-  body {
-    margin: 0;
-    font-family: system-ui, sans-serif;
-    background: #faf7f2;
-  }
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      background: #faf7f2;
+      color: #333;
+      font-size: 16px;
+    }
 
-  /* ★ stickyヘッダー対策（これが効く） */
-  html {
-    scroll-padding-top: 150px;
-  }
+    /* ★ stickyヘッダー対策（必須） */
+    html {
+      scroll-padding-top: 140px;
+    }
 
-  header {
-    position: sticky;
-    top: 0;
-    background: #fff7dd;
-    border-bottom: 1px solid #ccc;
-    padding: 8px 12px;
-    z-index: 100;
-  }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #fff7dd;
+      border-bottom: 1px solid #e0d7c2;
+      padding: 8px 12px;
+    }
 
-  nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
+    header h1 {
+      font-size: 18px;
+      margin: 0 0 4px 0;
+    }
 
-  nav a {
-    font-size: 14px;
-    padding: 4px 8px;
-    border: 1px solid #ccc;
-    border-radius: 999px;
-    text-decoration: none;
-    color: #333;
-    background: #fff;
-  }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
 
-  main {
-    padding: 12px;
-  }
+    nav a {
+      text-decoration: none;
+      font-size: 14px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid #e0cfa0;
+      background: #fffdf4;
+      color: #554018;
+    }
 
-  section {
-    margin-bottom: 40px;
-    padding: 16px;
-    background: #fff;
-    border-radius: 10px;
-    border: 1px solid #ddd;
+    nav a:active {
+      background: #ffe8a0;
+    }
 
-    /* ★ アンカー補正 */
-    scroll-margin-top: 150px;
-  }
-</style>
-</head>
+    main {
+      padding: 10px 12px 40px;
+    }
 
-<body>
+    section {
+      margin-bottom: 24px;
+      padding: 12px 12px 10px;
+      border-radius: 10px;
+      background: #ffffff;
+      border: 1px solid #eee0c8;
 
-<header id="top">
-  <h1>テストページ</h1>
-  <nav>
-    <a href="#a">A</a>
-    <a href="#b">B</a>
-    <a href="#c">C</a>
-  </nav>
-</header>
+      /* ★ アンカー補正 */
+      scroll-margin-top: 140px;
+    }
 
-<main>
-  <section id="a"><h2>A セクション</h2><p>内容</p></section>
-  <section id="b"><h2>B セクション</h2><p>内容</p></section>
-  <section id="c"><h2>C セクション</h2><p>内容</p></section>
-</main>
+    h2 {
+      font-size: 18px;
+      margin: 0 0 6px;
+      border-left: 4px solid #f0b344;
+      padding-left: 6px;
+    }
 
-</body>
-</html>
+    h3 {
+      font-size: 16px;
+      margin: 12px 0 4px;
+    }
+
+    .time-block {
+      font-size: 13px;
+      color: #7a6b4a;
+      margin-bottom: 4px;
+    }
+
+    .say {
+      padding-left: 12px;
+      border-left: 3px solid #ffe0a8;
+      margin: 4px 0 8px;
+    }
+
+    .label {
+      display: inline-block;
+      font-size: 11px;
+      padding: 1px 6px;
+      margin-right: 4px;
+      border-radius: 999px;
+      background: #f6eee0;
+      color: #7a5b27;
+    }
+
+    .link-top {
+      display: inline-block;
+      font-size: 11px;
+      margin-top: 6px;
+      color: #777;
+    }
+
+    .link-top a {
+      color: #777;
+      text-decoration: none;
+      border-bottom: 1px dotted #bbb;
+    }
+
+    .note {
+      font-size: 13px;
+      color: #555;
+      margin-top: 4px;
+    }
+
+    .pill-row {
+      margin: 4px 0 0;
+      font-size: 12px;
+      color: #77654b;
+    }
+
+    .pill-row span {
+      display: inline-block;
+      padding: 1px 6px;
+      margin-right: 4px;
+      border-radius: 999px;
+      background: #f7f0e3;
+    }
+  </styl
