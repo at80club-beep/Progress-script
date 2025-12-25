@@ -1,23 +1,80 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8" />
-<title>ものづくり教室 2日間 進行台本（先生用）</title>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>アンカー確認</title>
 
 <style>
-  /* ================================
-     基本設定
-  ================================= */
   body {
     margin: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    line-height: 1.6;
+    font-family: system-ui, sans-serif;
     background: #faf7f2;
-    color: #333;
-    font-size: 16px;
   }
 
-  /* ★ アンカー補正（JSで上書きされる） */
+  /* ★ stickyヘッダー対策（これが効く） */
   html {
-    scroll-paddin
+    scroll-padding-top: 150px;
+  }
+
+  header {
+    position: sticky;
+    top: 0;
+    background: #fff7dd;
+    border-bottom: 1px solid #ccc;
+    padding: 8px 12px;
+    z-index: 100;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  nav a {
+    font-size: 14px;
+    padding: 4px 8px;
+    border: 1px solid #ccc;
+    border-radius: 999px;
+    text-decoration: none;
+    color: #333;
+    background: #fff;
+  }
+
+  main {
+    padding: 12px;
+  }
+
+  section {
+    margin-bottom: 40px;
+    padding: 16px;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+
+    /* ★ アンカー補正 */
+    scroll-margin-top: 150px;
+  }
+</style>
+</head>
+
+<body>
+
+<header id="top">
+  <h1>テストページ</h1>
+  <nav>
+    <a href="#a">A</a>
+    <a href="#b">B</a>
+    <a href="#c">C</a>
+  </nav>
+</header>
+
+<main>
+  <section id="a"><h2>A セクション</h2><p>内容</p></section>
+  <section id="b"><h2>B セクション</h2><p>内容</p></section>
+  <section id="c"><h2>C セクション</h2><p>内容</p></section>
+</main>
+
+</body>
+</html>
