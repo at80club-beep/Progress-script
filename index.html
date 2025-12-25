@@ -21,14 +21,76 @@
       border-bottom: 1px solid #e0d7c2;
       padding: 8px 12px;
     }
-    header h1 {
-      font-size: 18px;
-      margin: 0 0 4px 0;
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: nowrap;
+      gap: 12px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+    }
+    .header-top::-webkit-scrollbar {
+      display: none;
+    }
+    .header-title {
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      min-width: 0;
+    }
+    .header-title h1 {
+      font-size: 15px;
+      margin: 0 0 2px 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .credit {
+      font-size: 10px;
+      color: #7a6b4a;
+      text-align: right;
+      white-space: nowrap;
+    }
+    .font-controls {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .font-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border: 1px solid #e0cfa0;
+      background: #fffdf4;
+      color: #554018;
+      border-radius: 50%;
+      font-size: 14px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .font-btn.active {
+      background: #f0b344;
+      color: white;
+      border-color: #d89c2c;
     }
     nav {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       gap: 6px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 4px;
+      margin-top: 8px;
+      scrollbar-width: none;
+    }
+    nav::-webkit-scrollbar {
+      display: none;
     }
     nav a {
       text-decoration: none;
@@ -38,6 +100,8 @@
       border: 1px solid #e0cfa0;
       background: #fffdf4;
       color: #554018;
+      flex-shrink: 0;
+      white-space: nowrap;
     }
     nav a:active {
       background: #ffe8a0;
@@ -51,7 +115,7 @@
       border-radius: 10px;
       background: #ffffff;
       border: 1px solid #eee0c8;
-      scroll-margin-top: 80px; /* 追加: ヘッダーの下に隠れないようにする */
+      scroll-margin-top: 80px;
     }
     h2 {
       font-size: 18px;
@@ -115,7 +179,18 @@
 <body>
 
 <header id="top">
-  <h1>ものづくり教室 進行台本（先生用）</h1>
+  <div class="header-top">
+    <div class="header-title">
+      <h1>ものづくり教室 進行台本（先生用）</h1>
+      <div class="credit">🐸by TreeFrog</div>
+    </div>
+    <div class="font-controls">
+      <span style="font-size: 12px; color: #77654b; margin-right: 4px; white-space: nowrap;">文字サイズ:</span>
+      <button class="font-btn" id="font-small" title="小さい文字サイズ">小</button>
+      <button class="font-btn active" id="font-medium" title="標準文字サイズ">中</button>
+      <button class="font-btn" id="font-large" title="大きい文字サイズ">大</button>
+    </div>
+  </div>
   <nav>
     <a href="#day1">1日目 全体</a>
     <a href="#day1-0-10">1日目 導入</a>
@@ -456,6 +531,93 @@
   </section>
 
 </main>
+
+<script>
+  // 文字サイズ設定の管理
+  document.addEventListener('DOMContentLoaded', function() {
+    const body = document.body;
+    const fontSmall = document.getElementById('font-small');
+    const fontMedium = document.getElementById('font-medium');
+    const fontLarge = document.getElementById('font-large');
+    const fontButtons = [fontSmall, fontMedium, fontLarge];
+    
+    // 保存された設定を取得
+    const savedFontSize = localStorage.getItem('fontSize') || 'medium';
+    
+    // 初期設定を適用
+    applyFontSize(savedFontSize);
+    updateActiveButton(savedFontSize);
+    
+    // ボタンにクリックイベントを追加
+    fontButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const size = this.id.replace('font-', '');
+        applyFontSize(size);
+        updateActiveButton(size);
+        // 設定を保存
+        localStorage.setItem('fontSize', size);
+      });
+    });
+    
+    // 文字サイズを適用する関数
+    function applyFontSize(size) {
+      // 現在の基本サイズを基準に相対的なサイズを設定
+      const baseSize = 16;
+      let multiplier;
+      
+      switch(size) {
+        case 'small':
+          multiplier = 0.875; // 14px (16 * 0.875)
+          break;
+        case 'medium':
+          multiplier = 1; // 16px (16 * 1)
+          break;
+        case 'large':
+          multiplier = 1.125; // 18px (16 * 1.125)
+          break;
+        default:
+          multiplier = 1;
+      }
+      
+      // 全体のフォントサイズを設定
+      body.style.fontSize = `${baseSize * multiplier}px`;
+      
+      // ヘッダー内のナビゲーションリンクも調整（相対的なサイズを維持）
+      const navLinks = document.querySelectorAll('nav a');
+      navLinks.forEach(link => {
+        if (size === 'small') {
+          link.style.fontSize = '13px';
+        } else if (size === 'medium') {
+          link.style.fontSize = '14px';
+        } else if (size === 'large') {
+          link.style.fontSize = '15px';
+        }
+      });
+      
+      // クレジットのフォントサイズも調整
+      const credit = document.querySelector('.credit');
+      if (size === 'small') {
+        credit.style.fontSize = '9px';
+      } else if (size === 'medium') {
+        credit.style.fontSize = '10px';
+      } else if (size === 'large') {
+        credit.style.fontSize = '11px';
+      }
+    }
+    
+    // アクティブなボタンを更新する関数
+    function updateActiveButton(activeSize) {
+      fontButtons.forEach(button => {
+        const buttonSize = button.id.replace('font-', '');
+        if (buttonSize === activeSize) {
+          button.classList.add('active');
+        } else {
+          button.classList.remove('active');
+        }
+      });
+    }
+  });
+</script>
 
 </body>
 </html>
