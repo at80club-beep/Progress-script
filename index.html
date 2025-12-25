@@ -1,71 +1,99 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title>ものづくり教室 進行台本（先生用）</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <title>ものづくり教室 2日間 進行台本（先生用）</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      background: #faf7f2;
+      color: #333;
+      font-size: 16px;
+    }
 
-<style>
-  /* =========================
-     基本
-  ========================== */
-  body {
-    margin: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background: #faf7f2;
-    color: #333;
-    line-height: 1.6;
-  }
+    /* ★★★ 追加①：アンカー補正（最重要） ★★★ */
+    html {
+      scroll-padding-top: 140px; /* ヘッダー実高さ＋余裕 */
+    }
 
-  /* ★ アンカーずれ対策（最重要） */
-  html {
-    scroll-padding-top: 130px; /* ← ヘッダー実高さより少し大きめ */
-  }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #fff7dd;
+      border-bottom: 1px solid #e0d7c2;
+      padding: 8px 12px;
+    }
 
-  /* =========================
-     ヘッダー
-  ========================== */
-  header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: #fff7dd;
-    border-bottom: 1px solid #e0d7c2;
-    padding: 8px 12px;
-  }
+    header h1 {
+      font-size: 18px;
+      margin: 0 0 4px 0;
+    }
 
-  header h1 {
-    margin: 0 0 6px;
-    font-size: 18px;
-  }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
 
-  nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
+    nav a {
+      text-decoration: none;
+      font-size: 14px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid #e0cfa0;
+      background: #fffdf4;
+      color: #554018;
+    }
 
-  nav a {
-    font-size: 14px;
-    padding: 4px 8px;
-    border-radius: 999px;
-    border: 1px solid #e0cfa0;
-    background: #fffdf4;
-    color: #554018;
-    text-decoration: none;
-  }
+    nav a:active {
+      background: #ffe8a0;
+    }
 
-  /* =========================
-     メイン
-  ========================== */
-  main {
-    padding: 12px;
-  }
+    main {
+      padding: 10px 12px 40px;
+    }
 
-  /* ★ section は1回だけ定義 */
-  section {
-    margin-bottom: 32px;
-    padding: 14px;
-    background: #ffffff;
-    border-radius: 10px;
-    border: 1px solid #eee0c8;
+    /* ★★★ 追加②：section側の補正 ★★★ */
+    section {
+      margin-bottom: 24px;
+      padding: 12px 12px 10px;
+      border-radius: 10px;
+      background: #ffffff;
+      border: 1px solid #eee0c8;
+
+      scroll-margin-top: 140px; /* ← これが効く */
+    }
+
+    h2 {
+      font-size: 18px;
+      margin: 0 0 6px;
+      border-left: 4px solid #f0b344;
+      padding-left: 6px;
+    }
+
+    h3 {
+      font-size: 16px;
+      margin: 12px 0 4px;
+    }
+
+    .time-block {
+      font-size: 13px;
+      color: #7a6b4a;
+      margin-bottom: 4px;
+    }
+
+    .say {
+      padding-left: 12px;
+      border-left: 3px solid #ffe0a8;
+      margin: 4px 0 8px;
+    }
+
+    .label {
+      display: inline-block;
+      font-size: 11px;
+      padding: 1px 6px;
+      margin-right: 4px;
