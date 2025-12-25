@@ -26,14 +26,8 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: nowrap;
-      gap: 12px;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      padding-bottom: 4px;
-      scrollbar-width: none;
-    }
-    .header-top::-webkit-scrollbar {
-      display: none;
+      gap: 8px;
+      margin-bottom: 8px;
     }
     .header-title {
       display: flex;
@@ -42,42 +36,11 @@
       min-width: 0;
     }
     .header-title h1 {
-      font-size: 15px;
-      margin: 0 0 2px 0;
+      font-size: 16px;
+      margin: 0;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-    }
-    .credit {
-      font-size: 10px;
-      color: #7a6b4a;
-      text-align: right;
-      white-space: nowrap;
-    }
-    .font-controls {
-      display: flex;
-      gap: 6px;
-      align-items: center;
-      flex-shrink: 0;
-    }
-    .font-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      border: 1px solid #e0cfa0;
-      background: #fffdf4;
-      color: #554018;
-      border-radius: 50%;
-      font-size: 14px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .font-btn.active {
-      background: #f0b344;
-      color: white;
-      border-color: #d89c2c;
     }
     nav {
       display: flex;
@@ -86,7 +49,6 @@
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       padding-bottom: 4px;
-      margin-top: 8px;
       scrollbar-width: none;
     }
     nav::-webkit-scrollbar {
@@ -105,6 +67,53 @@
     }
     nav a:active {
       background: #ffe8a0;
+    }
+    .font-controls-nav {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-shrink: 0;
+      margin-left: 4px;
+      padding-left: 8px;
+      border-left: 1px dashed #e0cfa0;
+    }
+    .font-label {
+      font-size: 11px;
+      color: #7a6b4a;
+      white-space: nowrap;
+      margin-right: 2px;
+    }
+    .font-btn-nav {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border: 1px solid #e0cfa0;
+      background: #fffdf4;
+      color: #554018;
+      border-radius: 50%;
+      font-size: 12px;
+      cursor: pointer;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+    .font-btn-nav.active {
+      background: #f0b344;
+      color: white;
+      border-color: #d89c2c;
+    }
+    .credit-nav {
+      font-size: 10px;
+      color: #7a6b4a;
+      white-space: nowrap;
+      padding: 4px 8px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      margin-left: 4px;
+      padding-left: 8px;
+      border-left: 1px dashed #e0cfa0;
     }
     main {
       padding: 10px 12px 40px;
@@ -182,13 +191,6 @@
   <div class="header-top">
     <div class="header-title">
       <h1>ものづくり教室 進行台本（先生用）</h1>
-      <div class="credit">🐸by TreeFrog</div>
-    </div>
-    <div class="font-controls">
-      <span style="font-size: 12px; color: #77654b; margin-right: 4px; white-space: nowrap;">文字サイズ:</span>
-      <button class="font-btn" id="font-small" title="小さい文字サイズ">小</button>
-      <button class="font-btn active" id="font-medium" title="標準文字サイズ">中</button>
-      <button class="font-btn" id="font-large" title="大きい文字サイズ">大</button>
     </div>
   </div>
   <nav>
@@ -203,6 +205,15 @@
     <a href="#day2-10-55">スイッチ</a>
     <a href="#day2-55-90">車体づくり</a>
     <a href="#day2-90-110">初走行＆締め</a>
+    
+    <div class="font-controls-nav">
+      <span class="font-label">文字:</span>
+      <button class="font-btn-nav" id="font-small-nav" title="小さい文字サイズ">小</button>
+      <button class="font-btn-nav active" id="font-medium-nav" title="標準文字サイズ">中</button>
+      <button class="font-btn-nav" id="font-large-nav" title="大きい文字サイズ">大</button>
+    </div>
+    
+    <div class="credit-nav">🐸by TreeFrog</div>
   </nav>
 </header>
 
@@ -536,9 +547,9 @@
   // 文字サイズ設定の管理
   document.addEventListener('DOMContentLoaded', function() {
     const body = document.body;
-    const fontSmall = document.getElementById('font-small');
-    const fontMedium = document.getElementById('font-medium');
-    const fontLarge = document.getElementById('font-large');
+    const fontSmall = document.getElementById('font-small-nav');
+    const fontMedium = document.getElementById('font-medium-nav');
+    const fontLarge = document.getElementById('font-large-nav');
     const fontButtons = [fontSmall, fontMedium, fontLarge];
     
     // 保存された設定を取得
@@ -551,7 +562,9 @@
     // ボタンにクリックイベントを追加
     fontButtons.forEach(button => {
       button.addEventListener('click', function() {
-        const size = this.id.replace('font-', '');
+        const size = this.id.replace('font-small-nav', 'small')
+                          .replace('font-medium-nav', 'medium')
+                          .replace('font-large-nav', 'large');
         applyFontSize(size);
         updateActiveButton(size);
         // 設定を保存
@@ -582,7 +595,7 @@
       // 全体のフォントサイズを設定
       body.style.fontSize = `${baseSize * multiplier}px`;
       
-      // ヘッダー内のナビゲーションリンクも調整（相対的なサイズを維持）
+      // ヘッダー内のナビゲーションリンクも調整
       const navLinks = document.querySelectorAll('nav a');
       navLinks.forEach(link => {
         if (size === 'small') {
@@ -595,7 +608,7 @@
       });
       
       // クレジットのフォントサイズも調整
-      const credit = document.querySelector('.credit');
+      const credit = document.querySelector('.credit-nav');
       if (size === 'small') {
         credit.style.fontSize = '9px';
       } else if (size === 'medium') {
@@ -603,12 +616,26 @@
       } else if (size === 'large') {
         credit.style.fontSize = '11px';
       }
+      
+      // フォントボタンのラベルも調整
+      const fontLabel = document.querySelector('.font-label');
+      if (size === 'small') {
+        fontLabel.style.fontSize = '10px';
+      } else if (size === 'medium') {
+        fontLabel.style.fontSize = '11px';
+      } else if (size === 'large') {
+        fontLabel.style.fontSize = '12px';
+      }
     }
     
     // アクティブなボタンを更新する関数
     function updateActiveButton(activeSize) {
       fontButtons.forEach(button => {
-        const buttonSize = button.id.replace('font-', '');
+        let buttonSize = '';
+        if (button.id === 'font-small-nav') buttonSize = 'small';
+        else if (button.id === 'font-medium-nav') buttonSize = 'medium';
+        else if (button.id === 'font-large-nav') buttonSize = 'large';
+        
         if (buttonSize === activeSize) {
           button.classList.add('active');
         } else {
