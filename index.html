@@ -468,4 +468,18 @@
 </main>
 
 </body>
+<script>
+  …（既存のコード）…
+
+// details（アコーディオン）を開いたときにスクロール補正
+document.querySelectorAll("details").forEach(d => {
+  d.addEventListener("toggle", () => {
+    if (d.open) {
+      const y = d.getBoundingClientRect().top + window.scrollY - 120;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  });
+});
+</script>
+
 </html>
