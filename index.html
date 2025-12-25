@@ -1,99 +1,62 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <title>ものづくり教室 2日間 進行台本（先生用）</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.6;
-      background: #faf7f2;
-      color: #333;
-      font-size: 16px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>表示テスト（アンカー）</title>
 
-    /* ★★★ 追加①：アンカー補正（最重要） ★★★ */
-    html {
-      scroll-padding-top: 140px; /* ヘッダー実高さ＋余裕 */
-    }
+<style>
+  body {
+    margin: 0;
+    font-family: sans-serif;
+  }
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: #fff7dd;
-      border-bottom: 1px solid #e0d7c2;
-      padding: 8px 12px;
-    }
+  /* stickyヘッダー対策 */
+  html {
+    scroll-padding-top: 100px;
+  }
 
-    header h1 {
-      font-size: 18px;
-      margin: 0 0 4px 0;
-    }
+  header {
+    position: sticky;
+    top: 0;
+    background: #ffeeaa;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
 
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
+  nav a {
+    margin-right: 10px;
+  }
 
-    nav a {
-      text-decoration: none;
-      font-size: 14px;
-      padding: 4px 8px;
-      border-radius: 999px;
-      border: 1px solid #e0cfa0;
-      background: #fffdf4;
-      color: #554018;
-    }
+  section {
+    margin: 40px;
+    padding: 20px;
+    border: 1px solid #ccc;
 
-    nav a:active {
-      background: #ffe8a0;
-    }
+    /* アンカー補正 */
+    scroll-margin-top: 100px;
+  }
+</style>
+</head>
 
-    main {
-      padding: 10px 12px 40px;
-    }
+<body>
 
-    /* ★★★ 追加②：section側の補正 ★★★ */
-    section {
-      margin-bottom: 24px;
-      padding: 12px 12px 10px;
-      border-radius: 10px;
-      background: #ffffff;
-      border: 1px solid #eee0c8;
+<header>
+  <nav>
+    <a href="#a">Aへ</a>
+    <a href="#b">Bへ</a>
+  </nav>
+</header>
 
-      scroll-margin-top: 140px; /* ← これが効く */
-    }
+<section id="a">
+  <h2>Aセクション</h2>
+  <p>ここがAです</p>
+</section>
 
-    h2 {
-      font-size: 18px;
-      margin: 0 0 6px;
-      border-left: 4px solid #f0b344;
-      padding-left: 6px;
-    }
+<section id="b">
+  <h2>Bセクション</h2>
+  <p>ここがBです</p>
+</section>
 
-    h3 {
-      font-size: 16px;
-      margin: 12px 0 4px;
-    }
-
-    .time-block {
-      font-size: 13px;
-      color: #7a6b4a;
-      margin-bottom: 4px;
-    }
-
-    .say {
-      padding-left: 12px;
-      border-left: 3px solid #ffe0a8;
-      margin: 4px 0 8px;
-    }
-
-    .label {
-      display: inline-block;
-      font-size: 11px;
-      padding: 1px 6px;
-      margin-right: 4px;
+</body>
+</html>
