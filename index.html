@@ -2,94 +2,251 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>リモコンカー 進行台本（指導員用）</title>
+<title>ものづくり教室 進行台本（1・2日目）</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 body {
-  font-family: system-ui, sans-serif;
-  background: #faf7f2;
   margin: 0;
-  padding: 12px;
-  line-height: 1.6;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #faf7f2;
+  color: #333;
+  font-size: 18px;
+  line-height: 1.7;
 }
 
-/* 共通ラベル */
-.label {
-  display: inline-block;
-  font-size: 11px;
-  padding: 2px 8px;
-  margin-right: 6px;
-  border-radius: 999px;
-  font-weight: bold;
+/* ===== ヘッダー ===== */
+header {
+  position: sticky;
+  top: 0;
+  background: #fff3cc;
+  border-bottom: 1px solid #e0d2a0;
+  padding: 10px;
+  z-index: 100;
+}
+
+header h1 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.font-controls {
+  margin-top: 6px;
+}
+
+.font-controls button {
+  font-size: 14px;
+  padding: 4px 10px;
+  margin-right: 4px;
+  border-radius: 20px;
+  border: 1px solid #c9b67d;
+  background: #fff;
+}
+
+/* ===== メイン ===== */
+main {
+  padding: 10px;
+}
+
+section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 16px;
+  border: 1px solid #eadfc3;
+}
+
+h2 {
+  font-size: 18px;
+  margin: 0 0 8px;
+  border-left: 5px solid #f0b344;
+  padding-left: 8px;
+}
+
+/* ===== ブロック ===== */
+.block {
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 /* メイン指導員 */
-.label.main {
-  background: #f0b344;
-  color: #ffffff;
+.main-teacher {
+  background: #fff6e0;
+  border-left: 6px solid #f0b344;
 }
 
 /* 補助指導員 */
-.label.sub {
-  background: #6fa8dc;
-  color: #ffffff;
+.sub-teacher {
+  background: #eef6ff;
+  border-left: 6px solid #4a90e2;
 }
 
-.say {
-  margin: 8px 0;
-  padding-left: 10px;
-  border-left: 3px solid #ddd;
-  background: #ffffff;
+.label {
+  display: inline-block;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-bottom: 4px;
+  color: #fff;
+}
+
+.label.main { background: #f0b344; }
+.label.sub  { background: #4a90e2; }
+
+.summary {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.detail {
+  font-size: 16px;
+}
+
+/* ===== チェック ===== */
+.check {
+  margin-top: 6px;
+  font-size: 16px;
+}
+
+.check input {
+  transform: scale(1.3);
+  margin-right: 6px;
+}
+
+/* ===== スマホ微調整 ===== */
+@media (max-width: 480px) {
+  body { font-size: 19px; }
 }
 </style>
 </head>
 
 <body>
 
-<h1>リモコンカー 進行台本（色分け版）</h1>
+<header>
+  <h1>ものづくり教室 進行台本（1日目・2日目）</h1>
+  <div class="font-controls">
+    <button onclick="setFont(17)">小</button>
+    <button onclick="setFont(19)">中</button>
+    <button onclick="setFont(22)">大</button>
+  </div>
+</header>
 
+<main>
+
+<!-- ================= 1日目 ================= -->
 <section>
-  <h2>オープニング</h2>
+  <h2>【1日目】はじまり</h2>
 
-  <div class="say">
-    <span class="label main">メイン指導員</span>
-    みなさん、ようこそ。ものづくり教室をはじめます。
-  </div>
-
-  <div class="say">
-    <span class="label main">メイン指導員</span>
-    まずは班の4人がそろうのを待ちましょう。
-  </div>
-
-  <div class="say">
-    <span class="label sub">補助指導員</span>
-    道具箱が取れていない班は、こちらで一緒に確認しましょう。
+  <div class="block main-teacher">
+    <div class="label main">メイン指導員</div>
+    <div class="summary">初日。落ち着いて教室を始める。</div>
+    <div class="detail">
+      みなさん、こんにちは。<br>
+      ものづくり教室をはじめます。
+    </div>
+    <div class="check">
+      <label><input type="checkbox"> 実施した</label>
+    </div>
   </div>
 </section>
 
 <section>
-  <h2>制作中</h2>
+  <h2>【1日目】工作</h2>
 
-  <div class="say">
-    <span class="label sub">補助指導員</span>
-    LEDが光らないときは、向きを一度入れ替えてみよう。
+  <div class="block main-teacher">
+    <div class="label main">メイン指導員</div>
+    <div class="summary">見本と同じにつないでみる。</div>
+    <div class="detail">
+      前の見本を見ながら、<br>
+      同じようにつなぎましょう。
+    </div>
+    <div class="check">
+      <label><input type="checkbox"> 説明した</label>
+    </div>
   </div>
 
-  <div class="say">
-    <span class="label main">メイン指導員</span>
-    今は「光るかどうか」が大事です。見た目はあとでOKですよ。
+  <div class="block sub-teacher">
+    <div class="label sub">補助指導員</div>
+    <div class="summary">光らない子をやさしく支援。</div>
+    <div class="detail">
+      LEDの向きを一緒に確認。<br>
+      直しすぎない。
+    </div>
+    <div class="check">
+      <label><input type="checkbox"> 巡回した</label>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 2日目 ================= -->
+<section>
+  <h2>【2日目】ふりかえり</h2>
+
+  <div class="block main-teacher">
+    <div class="label main">メイン指導員</div>
+    <div class="summary">昨日の工作を思い出す。</div>
+    <div class="detail">
+      昨日やったことを、<br>
+      みんなで少し思い出しましょう。
+    </div>
+    <div class="check">
+      <label><input type="checkbox"> ふりかえり実施</label>
+    </div>
   </div>
 </section>
 
 <section>
-  <h2>まとめ</h2>
+  <h2>【2日目】改良・工夫</h2>
 
-  <div class="say">
-    <span class="label main">メイン指導員</span>
-    今日できたことを、ぜひおうちでも話してみてください。
+  <div class="block main-teacher">
+    <div class="label main">メイン指導員</div>
+    <div class="summary">自由に工夫してよいと伝える。</div>
+    <div class="detail">
+      向きを変えたり、<br>
+      つなぎ方を試してみましょう。
+    </div>
+    <div class="check">
+      <label><input type="checkbox"> 工夫説明</label>
+    </div>
+  </div>
+
+  <div class="block sub-teacher">
+    <div class="label sub">補助指導員</div>
+    <div class="summary">質問されたらヒントだけ。</div>
+    <div class="detail">
+      答えは言わず、<br>
+      「どう思う？」と返す。
+    </div>
+    <div class="check">
+      <label><input type="checkbox"> 声かけ</label>
+    </div>
   </div>
 </section>
+
+<section>
+  <h2>【2日目】終わり</h2>
+
+  <div class="block main-teacher">
+    <div class="label main">メイン指導員</div>
+    <div class="summary">できたことを認めて終える。</div>
+    <div class="detail">
+      2日間よくがんばりました。<br>
+      今日の「できた」を大切にしましょう。
+    </div>
+    <div class="check">
+      <label><input type="checkbox"> 終了あいさつ</label>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+function setFont(size) {
+  document.body.style.fontSize = size + "px";
+}
+</script>
 
 </body>
 </html>
