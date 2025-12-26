@@ -1,251 +1,649 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title>ものづくり教室 進行台本（1・2日目）</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<style>
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #faf7f2;
-  color: #333;
-  font-size: 18px;
-  line-height: 1.7;
-}
-
-/* ===== ヘッダー ===== */
-header {
-  position: sticky;
-  top: 0;
-  background: #fff3cc;
-  border-bottom: 1px solid #e0d2a0;
-  padding: 10px;
-  z-index: 100;
-}
-
-header h1 {
-  font-size: 20px;
-  margin: 0;
-}
-
-.font-controls {
-  margin-top: 6px;
-}
-
-.font-controls button {
-  font-size: 14px;
-  padding: 4px 10px;
-  margin-right: 4px;
-  border-radius: 20px;
-  border: 1px solid #c9b67d;
-  background: #fff;
-}
-
-/* ===== メイン ===== */
-main {
-  padding: 10px;
-}
-
-section {
-  background: #fff;
-  border-radius: 12px;
-  padding: 12px;
-  margin-bottom: 16px;
-  border: 1px solid #eadfc3;
-}
-
-h2 {
-  font-size: 18px;
-  margin: 0 0 8px;
-  border-left: 5px solid #f0b344;
-  padding-left: 8px;
-}
-
-/* ===== ブロック ===== */
-.block {
-  padding: 10px;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-
-/* メイン指導員 */
-.main-teacher {
-  background: #fff6e0;
-  border-left: 6px solid #f0b344;
-}
-
-/* 補助指導員 */
-.sub-teacher {
-  background: #eef6ff;
-  border-left: 6px solid #4a90e2;
-}
-
-.label {
-  display: inline-block;
-  font-size: 12px;
-  padding: 2px 8px;
-  border-radius: 999px;
-  margin-bottom: 4px;
-  color: #fff;
-}
-
-.label.main { background: #f0b344; }
-.label.sub  { background: #4a90e2; }
-
-.summary {
-  font-weight: bold;
-  margin-bottom: 4px;
-}
-
-.detail {
-  font-size: 16px;
-}
-
-/* ===== チェック ===== */
-.check {
-  margin-top: 6px;
-  font-size: 16px;
-}
-
-.check input {
-  transform: scale(1.3);
-  margin-right: 6px;
-}
-
-/* ===== スマホ微調整 ===== */
-@media (max-width: 480px) {
-  body { font-size: 19px; }
-}
-</style>
+  <meta charset="UTF-8" />
+  <title>リモコンカー 進行台本（メイン指導員用）</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      background: #faf7f2;
+      color: #333;
+      font-size: 16px;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #fff7dd;
+      border-bottom: 1px solid #e0d7c2;
+      padding: 8px 12px;
+    }
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: nowrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .header-title {
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      min-width: 0;
+    }
+    .header-title h1 {
+      font-size: 18px;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    nav {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 6px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+    }
+    nav::-webkit-scrollbar {
+      display: none;
+    }
+    nav a {
+      text-decoration: none;
+      font-size: 14px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid #e0cfa0;
+      background: #fffdf4;
+      color: #554018;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+    nav a:active {
+      background: #ffe8a0;
+    }
+    .font-controls-nav {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-shrink: 0;
+      margin-left: 4px;
+      padding-left: 8px;
+      border-left: 1px dashed #e0cfa0;
+    }
+    .font-label {
+      font-size: 11px;
+      color: #7a6b4a;
+      white-space: nowrap;
+      margin-right: 2px;
+    }
+    .font-btn-nav {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border: 1px solid #e0cfa0;
+      background: #fffdf4;
+      color: #554018;
+      border-radius: 50%;
+      font-size: 12px;
+      cursor: pointer;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+    .font-btn-nav.active {
+      background: #f0b344;
+      color: white;
+      border-color: #d89c2c;
+    }
+    .credit-nav {
+      font-size: 10px;
+      color: #7a6b4a;
+      white-space: nowrap;
+      padding: 4px 8px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      margin-left: 4px;
+      padding-left: 8px;
+      border-left: 1px dashed #e0cfa0;
+    }
+    main {
+      padding: 10px 12px 40px;
+    }
+    section {
+      margin-bottom: 24px;
+      padding: 12px 12px 10px;
+      border-radius: 10px;
+      background: #ffffff;
+      border: 1px solid #eee0c8;
+      scroll-margin-top: 80px;
+    }
+    h2 {
+      font-size: 18px;
+      margin: 0 0 6px;
+      border-left: 4px solid #f0b344;
+      padding-left: 6px;
+    }
+    h3 {
+      font-size: 16px;
+      margin: 12px 0 4px;
+    }
+    .time-block {
+      font-size: 13px;
+      color: #7a6b4a;
+      margin-bottom: 4px;
+    }
+    .say {
+      padding-left: 12px;
+      border-left: 3px solid #ffe0a8;
+      margin: 4px 0 8px;
+    }
+    .label {
+      display: inline-block;
+      font-size: 11px;
+      padding: 1px 6px;
+      margin-right: 4px;
+      border-radius: 999px;
+      background: #f6eee0;
+      color: #7a5b27;
+    }
+    .link-top {
+      display: inline-block;
+      font-size: 11px;
+      margin-top: 6px;
+      color: #777;
+    }
+    .link-top a {
+      color: #777;
+      text-decoration: none;
+      border-bottom: 1px dotted #bbb;
+    }
+    .note {
+      font-size: 13px;
+      color: #555;
+      margin-top: 4px;
+    }
+    .pill-row {
+      margin: 4px 0 0;
+      font-size: 12px;
+      color: #77654b;
+    }
+    .pill-row span {
+      display: inline-block;
+      padding: 1px 6px;
+      margin-right: 4px;
+      border-radius: 999px;
+      background: #f7f0e3;
+    }
+  </style>
 </head>
-
 <body>
 
-<header>
-  <h1>ものづくり教室 進行台本（1日目・2日目）</h1>
-  <div class="font-controls">
-    <button onclick="setFont(17)">小</button>
-    <button onclick="setFont(19)">中</button>
-    <button onclick="setFont(22)">大</button>
+<header id="top">
+  <div class="header-top">
+    <div class="header-title">
+      <h1>リモコンカー 進行台本（メイン指導員用）</h1>
+    </div>
   </div>
+  <nav>
+    <a href="#day1">1日目 全体</a>
+    <a href="#day1-0-10">1日目 導入</a>
+    <a href="#day1-10-35">電気のしくみ</a>
+    <a href="#day1-35-55">チェッカー</a>
+    <a href="#day1-55-85">電池BOX</a>
+    <a href="#day1-85-110">名付け＆まとめ</a>
+    <a href="#day2">2日目 全体</a>
+    <a href="#day2-0-10">2日目 おさらい</a>
+    <a href="#day2-10-55">スイッチ</a>
+    <a href="#day2-55-90">車体づくり</a>
+    <a href="#day2-90-110">初走行＆締め</a>
+    
+    <div class="font-controls-nav">
+      <span class="font-label">文字:</span>
+      <button class="font-btn-nav" id="font-small-nav" title="小さい文字サイズ">小</button>
+      <button class="font-btn-nav active" id="font-medium-nav" title="標準文字サイズ">中</button>
+      <button class="font-btn-nav" id="font-large-nav" title="大きい文字サイズ">大</button>
+    </div>
+    
+    <div class="credit-nav">🐸by TreeFrog</div>
+  </nav>
 </header>
 
 <main>
 
-<!-- ================= 1日目 ================= -->
-<section>
-  <h2>【1日目】はじまり</h2>
+  <!-- 1日目 概要 -->
+  <section id="day1">
+    <h2>1日目：電気のしくみ → 電池BOX → チェッカー（110分）</h2>
+    <div class="note">
+      狙い：<br />
+      ・電気の向きとLEDの一方通行ルールを体感する<br />
+      ・「心臓部」である電池BOXを自分の手で完成させる
+    </div>
+    <div class="pill-row">
+      <span>導入 10分</span><span>電気の基本 25分</span><span>チェッカー 20分</span><span>電池BOX 30分</span><span>名付け＆まとめ 25分</span>
+    </div>
+  </section>
 
-  <div class="block main-teacher">
-    <div class="label main">メイン指導員</div>
-    <div class="summary">初日。落ち着いて教室を始める。</div>
-    <div class="detail">
-      みなさん、こんにちは。<br>
-      ものづくり教室をはじめます。
-    </div>
-    <div class="check">
-      <label><input type="checkbox"> 実施した</label>
-    </div>
-  </div>
-</section>
+  <!-- 1日目 0-10 -->
+  <section id="day1-0-10">
+    <h3>1日目 0〜10分：オープニング・準備</h3>
+    <div class="time-block">目安：10分</div>
 
-<section>
-  <h2>【1日目】工作</h2>
+    <div class="say">
+      <span class="label">先生</span>
+      「みなさん、ようこそ。ものづくり教室をはじめます。<br />
+      まずは席について、班の4人がそろうのを待ちましょう。」
+    </div>
 
-  <div class="block main-teacher">
-    <div class="label main">メイン指導員</div>
-    <div class="summary">見本と同じにつないでみる。</div>
-    <div class="detail">
-      前の見本を見ながら、<br>
-      同じようにつなぎましょう。
+    <div class="say">
+      <span class="label">先生</span>
+      「4人そろった班から、静かに左のドアから外に出て、<br />
+      自分の道具箱とカッターマットを取りに行きます。<br />
+      取れたら、席に戻ってください。」
     </div>
-    <div class="check">
-      <label><input type="checkbox"> 説明した</label>
-    </div>
-  </div>
 
-  <div class="block sub-teacher">
-    <div class="label sub">補助指導員</div>
-    <div class="summary">光らない子をやさしく支援。</div>
-    <div class="detail">
-      LEDの向きを一緒に確認。<br>
-      直しすぎない。
+    <div class="say">
+      <span class="label">先生</span>
+      「席に戻れた班は、次に材料を受け取りましょう。<br />
+      机の上の見本とプリントを見て、今日のミッションを軽く確認します。」
     </div>
-    <div class="check">
-      <label><input type="checkbox"> 巡回した</label>
-    </div>
-  </div>
-</section>
 
-<!-- ================= 2日目 ================= -->
-<section>
-  <h2>【2日目】ふりかえり</h2>
+    <div class="link-top"><a href="#top">▲ 上へ戻る</a></div>
+  </section>
 
-  <div class="block main-teacher">
-    <div class="label main">メイン指導員</div>
-    <div class="summary">昨日の工作を思い出す。</div>
-    <div class="detail">
-      昨日やったことを、<br>
-      みんなで少し思い出しましょう。
-    </div>
-    <div class="check">
-      <label><input type="checkbox"> ふりかえり実施</label>
-    </div>
-  </div>
-</section>
+  <!-- 1日目 10-35 -->
+  <section id="day1-10-35">
+    <h3>1日目 10〜35分：電気の基本（LED・電流の向き）</h3>
+    <div class="time-block">目安：25分</div>
 
-<section>
-  <h2>【2日目】改良・工夫</h2>
+    <div class="say">
+      <span class="label">先生</span>
+      「今日はまず、"電気ってなに？"から始めます。<br />
+      電気には、水の流れのように"向き"があります。」
+    </div>
 
-  <div class="block main-teacher">
-    <div class="label main">メイン指導員</div>
-    <div class="summary">自由に工夫してよいと伝える。</div>
-    <div class="detail">
-      向きを変えたり、<br>
-      つなぎ方を試してみましょう。
+    <div class="say">
+      <span class="label">先生</span>
+      「LEDという小さなライトは、この"向き"が合うと光ります。<br />
+      逆向きだと、光りません。今から実際に見てみましょう。」
     </div>
-    <div class="check">
-      <label><input type="checkbox"> 工夫説明</label>
-    </div>
-  </div>
 
-  <div class="block sub-teacher">
-    <div class="label sub">補助指導員</div>
-    <div class="summary">質問されたらヒントだけ。</div>
-    <div class="detail">
-      答えは言わず、<br>
-      「どう思う？」と返す。
+    <div class="say">
+      <span class="label">先生</span>
+      「LEDの足の長さを見てください。<br />
+      長いほうがプラス、短いほうがマイナスです。ここが大事なポイントです。」
     </div>
-    <div class="check">
-      <label><input type="checkbox"> 声かけ</label>
-    </div>
-  </div>
-</section>
 
-<section>
-  <h2>【2日目】終わり</h2>
+    <div class="say">
+      <span class="label">先生</span>
+      「もし光らなかったら、"つなぐ向きが逆かな？"と考えてみましょう。<br />
+      ただの失敗ではなく、"ヒント"です。」
+    </div>
 
-  <div class="block main-teacher">
-    <div class="label main">メイン指導員</div>
-    <div class="summary">できたことを認めて終える。</div>
-    <div class="detail">
-      2日間よくがんばりました。<br>
-      今日の「できた」を大切にしましょう。
+    <div class="link-top"><a href="#day1">▲ 1日目の概要へ</a>　/　<a href="#top">▲ 上へ戻る</a></div>
+  </section>
+
+  <!-- 1日目 35-55 -->
+  <section id="day1-35-55">
+    <h3>1日目 35〜55分：マジックチェッカー体験</h3>
+    <div class="time-block">目安：20分</div>
+
+    <div class="say">
+      <span class="label">先生</span>
+      「ここからは"マジックチェッカー"の時間です。<br />
+      LEDを電池につないで、どんな色で光るか見てみましょう。」
     </div>
-    <div class="check">
-      <label><input type="checkbox"> 終了あいさつ</label>
+
+    <div class="say">
+      <span class="label">先生</span>
+      「赤く光いたら電気は"右向き"。<br />
+      緑に光いたら電気は"左向き"。<br />
+      電気の向きが"見える"って、おもしろいですね。」
     </div>
-  </div>
-</section>
+
+    <div class="say">
+      <span class="label">先生</span>
+      「班で交代しながら、全員が試せるようにしましょう。<br />
+      わからないときは、班の仲間と話しながら進めてください。」
+    </div>
+
+    <div class="link-top"><a href="#day1">▲ 1日目の概要へ</a>　/　<a href="#top">▲ 上へ戻る</a></div>
+  </section>
+
+  <!-- 1日目 55-85 -->
+  <section id="day1-55-85">
+    <h3>1日目 55〜85分：電池BOXづくり</h3>
+    <div class="time-block">目安：30分</div>
+
+    <div class="say">
+      <span class="label">先生</span>
+      「次は、みんなの車の"心臓部"になる電池BOXを作ります。<br />
+      まず、完成見本をよく見て、班で"どこが大事そうか"話してみましょう。」
+    </div>
+
+    <div class="say">
+      <span class="label">先生</span>
+      「作りはじめてOKです。<br />
+      わからないところがあったら、班の中で相談してから、先生を呼んでください。」
+    </div>
+
+    <div class="say">
+      <span class="label">先生</span>
+      「電線がすぐ外れてしまうときは、<br />
+      小さい磁石と銅線で電池の端子にはさみ、その上から銅テープでしっかり止めます。」
+    </div>
+
+    <div class="note">
+      ※時間が押しそうなときは：<br />
+      ・細かい見た目より「とりあえず光る状態」を優先してOK、と声をかける。
+    </div>
+
+    <div class="link-top"><a href="#day1">▲ 1日目の概要へ</a>　/　<a href="#top">▲ 上へ戻る</a></div>
+  </section>
+
+  <!-- 1日目 85-110 -->
+  <section id="day1-85-110">
+    <h3>1日目 85〜110分：点灯チェック・名付け・まとめ</h3>
+    <div class="time-block">目安：25分</div>
+
+    <div class="say">
+      <span class="label">先生</span>
+      「電池BOXができた班から、LEDをつないでみましょう。<br />
+      ピカッと光ったら大成功です！」
+    </div>
+
+    <div class="say">
+      <span class="label">先生</span>
+      「つかないときは、もう一度チャレンジしてみましょう。<br />
+      班みんなで、"どこが違うのかな？"と話し合うのも大事な時間です。」
+    </div>
+
+    <div class="say">
+      <span class="label">先生</span>
+      「ここで、この道具に名前をつけましょう。<br />
+      もとの名前は"LED＝電池プラマイ判定機"...ちょっと長くて、かっこよくありませんね。」
+    </div>
+
+    <div class="say">
+      <span class="label">先生</span>
+      「ヒントは"光る"と"プラマイ"。<br />
+      班で1つ、名前を考えてみましょう。」
+    </div>
+
+    <div class="say">
+      <span class="label">先生</span>
+      「今日のまとめです。<br />
+      電気には向きがあること。LEDは一方通行のときだけ光ること。<br />
+      そして、みんなの手で電池BOXが完成したこと。<br />
+      明日は、この電池BOXを使ってスイッチと車を作り、走らせます。楽しみにしていてください。」
+    </div>
+
+    <div class="link-top"><a href="#top">▲ 上へ戻る</a></div>
+  </section>
+
+  <!-- 2日目 概要 -->
+  <section id="day2">
+    <h2>2日目：スイッチ → 車体 → 初走行（110分）</h2>
+    <div class="note">
+      狙い：<br />
+      ・スイッチで電気の向きを切り替える感覚をつかむ<br />
+      ・自分だけの車体を作り、初走行で達成感を味わう
+    </div>
+    <div class="pill-row">
+      <span>おさらい 10分</span><span>スイッチ 45分</span><span>車体 35分</span><span>初走行＆締め 20分</span>
+    </div>
+  </section>
+
+  <!-- 2日目 0-10 -->
+  <section id="day2-0-10">
+    <h3>2日目 0〜10分：おさらい</h3>
+    <div class="time-block">目安：10分</div>
+
+    <div class="say">
+      <span class="label">先生</span>
+      「おはようございます。2日目のスタートです。<br />
+      まずは、昨日の復習から始めましょう。」
+    </div>
+
+    <div class="say">
+      <span class="label">先生</span>
+      「モーターは、つなぐ電線の向きを逆にすると、回る向きも逆になります。<br />
+      電気の向きが、動きの向きとつながっているんですね。」
+    </div>
+
+    <div class="say">
+      <span class="label">先生</span>
+      「絶縁と短絡のクイズも少しだけやってみましょう。<br />
+      "くっつけていいところ"と"くっつけてはいけないところ"、思い出せますか？」
+    </div>
+
+    <div class="link-top"><a href="#day2">▲ 2日目の概要へ</a>　/　<a href="#top">▲ 上へ戻る</a></div>
+  </section>
+
+  <!-- 2日目 10-55 -->
+  <section id="day2-10-55">
+    <h3>2日目 10〜55分：ミッション2（スイッチづくり）</h3>
+    <div class="time-block">目安：45分</div>
+
+    <div class="say">
+      <span class="label">先生</span>
+      「ここからは、みんなの車を動かす"リモコンスイッチ"を作ります。<br />
+      材料を取りに行きましょう。」
+    </div>
+
+    <div class="say">
+      <span class="label">先生</span>
+      「スイッチは、ボタンを押すことで電気の流れる道を切り替えるしくみです。<br />
+      左のボタンと右のボタンで、プラスとマイナスの向きが入れ替わります。」
+    </div>
+
+    <div class="say">
+      <span class="label">先生</span>
+      「作っている途中で、<br />
+      "本当に電気の道が変わっているかな？"と思ったら、<br />
+      ひかる！プラマイチェッカーをつないで、光り方を見てみましょう。」
+    </div>
+
+    <div class="say">
+      <span class="label">先生</span>
+      「うまく動かないときは、まず銅テープを見てください。<br />
+      少しでも浮いていると、電気が通りにくくなります。<br />
+      押さえて、しっかり接触するようにしましょう。」
+    </div>
+
+    <div class="note">
+      ※時間が押しそうなとき：<br />
+      ・細かな見た目よりも「ボタンを押すと光り方が変わる」状態を優先する、と一言添える。
+    </div>
+
+    <div class="link-top"><a href="#day2">▲ 2日目の概要へ</a>　/　<a href="#top">▲ 上へ戻る</a></div>
+  </section>
+
+  <!-- 2日目 55-90 -->
+  <section id="day2-55-90">
+    <h3>2日目 55〜90分：ミッション3（車体づくり）</h3>
+    <div class="time-block">目安：35分</div>
+
+    <div class="say">
+      <span class="label">先生</span>
+      「いよいよ、みんなの"愛車"になる車体を作ります。<br />
+      段ボールの大きさは、決められた範囲の中なら自由です。<br />
+      どんな形にするか、まず班で相談してみましょう。」
+    </div>
+
+    <div class="say">
+      <span class="label">先生</span>
+      「タイヤとシャフト、モーターを取り付けていきます。<br />
+      タイヤが斜めについていると、走りが安定しません。<br />
+      横から見て、まっすぐになっているか確認してみましょう。」
+    </div>
+
+    <div class="say">
+      <span class="label">先生</span>
+      「電線は、ねじれたり、ひっぱられ過ぎたりしないように気をつけましょう。<br />
+      動く部分にひっかからないように、少し余裕をもたせるのがコツです。」
+    </div>
+
+    <div class="note">
+      ※時間が足りないとき：<br />
+      ・飾りやデザインは"あとで足してOK"と伝え、まずは走る状態を目標にする。
+    </div>
+
+    <div class="link-top"><a href="#day2">▲ 2日目の概要へ</a>　/　<a href="#top">▲ 上へ戻る</a></div>
+  </section>
+
+  <!-- 2日目 90-110 -->
+  <section id="day2-90-110">
+    <h3>2日目 90〜110分：初走行テスト＆エンディング</h3>
+    <div class="time-block">目安：20分</div>
+
+    <div class="say">
+      <span class="label">先生</span>
+      「では、スイッチと車体を電線でつないで、初めての走行テストをしてみましょう。<br />
+      まずは、前に進むかどうかを確認します。」
+    </div>
+
+    <div class="say">
+      <span class="label">先生</span>
+      「もし、後ろ向きに走ってしまったら、<br />
+      モーターについている2本の電線を入れ替えてみてください。<br />
+      電気の向きが変わると、モーターの回る向きも変わります。」
+    </div>
+
+    <div class="say">
+      <span class="label">先生</span>
+      「まっすぐ走らない車は、タイヤの向きや、重さのバランスを少し調整してみましょう。<br />
+      少しずつ直していくのも、大事な"ものづくり"の時間です。」
+    </div>
+
+    <div class="say">
+      <span class="label">先生</span>
+      「最後に、今日のまとめです。<br />
+      電気の向き、スイッチのしくみ、それを使って自分だけのレスキューカーを作りました。<br />
+      これは、世界にひとつだけの作品です。<br />
+      みなさんのひらめきと、あきらめずに工夫した力がつまっています。」
+    </div>
+
+    <div class="say">
+      <span class="label">先生</span>
+      「2日間、本当におつかれさまでした。<br />
+      今日の"できた！"という気持ちを、次のチャレンジにも持っていってくださいね。」
+    </div>
+
+    <div class="link-top"><a href="#top">▲ 上へ戻る</a></div>
+  </section>
 
 </main>
 
 <script>
-function setFont(size) {
-  document.body.style.fontSize = size + "px";
-}
+  // 文字サイズ設定の管理
+  document.addEventListener('DOMContentLoaded', function() {
+    const body = document.body;
+    const fontSmall = document.getElementById('font-small-nav');
+    const fontMedium = document.getElementById('font-medium-nav');
+    const fontLarge = document.getElementById('font-large-nav');
+    const fontButtons = [fontSmall, fontMedium, fontLarge];
+    
+    // 保存された設定を取得
+    const savedFontSize = localStorage.getItem('fontSize') || 'medium';
+    
+    // 初期設定を適用
+    applyFontSize(savedFontSize);
+    updateActiveButton(savedFontSize);
+    
+    // ボタンにクリックイベントを追加
+    fontButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const size = this.id.replace('font-small-nav', 'small')
+                          .replace('font-medium-nav', 'medium')
+                          .replace('font-large-nav', 'large');
+        applyFontSize(size);
+        updateActiveButton(size);
+        // 設定を保存
+        localStorage.setItem('fontSize', size);
+      });
+    });
+    
+    // 文字サイズを適用する関数
+    function applyFontSize(size) {
+      // 現在の基本サイズを基準に相対的なサイズを設定
+      const baseSize = 16;
+      let multiplier;
+      
+      switch(size) {
+        case 'small':
+          multiplier = 0.875; // 14px (16 * 0.875)
+          break;
+        case 'medium':
+          multiplier = 1; // 16px (16 * 1)
+          break;
+        case 'large':
+          multiplier = 1.125; // 18px (16 * 1.125)
+          break;
+        default:
+          multiplier = 1;
+      }
+      
+      // 全体のフォントサイズを設定
+      body.style.fontSize = `${baseSize * multiplier}px`;
+      
+      // ヘッダー内のナビゲーションリンクも調整
+      const navLinks = document.querySelectorAll('nav a');
+      navLinks.forEach(link => {
+        if (size === 'small') {
+          link.style.fontSize = '13px';
+        } else if (size === 'medium') {
+          link.style.fontSize = '14px';
+        } else if (size === 'large') {
+          link.style.fontSize = '15px';
+        }
+      });
+      
+      // クレジットのフォントサイズも調整
+      const credit = document.querySelector('.credit-nav');
+      if (size === 'small') {
+        credit.style.fontSize = '9px';
+      } else if (size === 'medium') {
+        credit.style.fontSize = '10px';
+      } else if (size === 'large') {
+        credit.style.fontSize = '11px';
+      }
+      
+      // フォントボタンのラベルも調整
+      const fontLabel = document.querySelector('.font-label');
+      if (size === 'small') {
+        fontLabel.style.fontSize = '10px';
+      } else if (size === 'medium') {
+        fontLabel.style.fontSize = '11px';
+      } else if (size === 'large') {
+        fontLabel.style.fontSize = '12px';
+      }
+    }
+    
+    // アクティブなボタンを更新する関数
+    function updateActiveButton(activeSize) {
+      fontButtons.forEach(button => {
+        let buttonSize = '';
+        if (button.id === 'font-small-nav') buttonSize = 'small';
+        else if (button.id === 'font-medium-nav') buttonSize = 'medium';
+        else if (button.id === 'font-large-nav') buttonSize = 'large';
+        
+        if (buttonSize === activeSize) {
+          button.classList.add('active');
+        } else {
+          button.classList.remove('active');
+        }
+      });
+    }
+  });
 </script>
 
 </body>
